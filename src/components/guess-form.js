@@ -1,15 +1,16 @@
 import React from 'react';
-
+import store from '../store';
+import {userGuess, updateStatus} from '../actions/index';
 import './guess-form.css';
 
 export default class GuessForm extends React.Component {
   onSubmit(event) {
     event.preventDefault();
 
-    if (this.props.onMakeGuess) {
-      const value = this.input.value;
-      this.props.onMakeGuess(value);
-    }
+    const value = this.input.value;
+    store.dispatch(userGuess(value));
+    store.dispatch(updateStatus());
+
     this.input.value = '';
     this.input.focus();
   }

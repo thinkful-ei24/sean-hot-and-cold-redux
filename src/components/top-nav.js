@@ -1,4 +1,6 @@
 import React from 'react';
+import store from '../store';
+import {restartGame} from '../actions';
 
 import './top-nav.css';
 
@@ -20,7 +22,7 @@ export default function TopNav(props) {
             href="#feedback"
             className="new"
             aria-label="Start a new game"
-            onClick={() => props.onRestartGame()}
+            onClick={() => store.dispatch(restartGame())}
           >
             + New Game
           </a>
